@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>newStudent</title>
+</head>
+
+<div id="header" style="background-color:#33CCCC;">
+  <h1 style="margin-bottom:0;text-align:center">欢迎来到驾校管理系统</h1></div>
+<body>
+<div th:insert="commons::fragment-name"></div>
+
+<div id="content" style="background-color:#E0FFFF;height:1000px;width:1600px;float:left;">
+  <h2>新生信息登陆</h2>
+  <p th:text="${tip}"></p>
+  <form action="/newStudent" method="post">
+    <div>
+      <label>
+        输入学生姓名
+        <input type="text" name="name">
+      </label>
+    </div>
+    <input type="submit" value="提交">
+  </form>
+
+
+
+</div>
+</body>
+</html>

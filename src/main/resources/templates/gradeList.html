@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>gradeList</title>
+</head>
+
+<div id="header" style="background-color:#33CCCC;">
+  <h1 style="margin-bottom:0;text-align:center">欢迎来到驾校管理系统</h1></div>
+<body>
+<div th:insert="commons::fragment-name"></div>
+
+<div id="content" style="background-color:#E0FFFF;height:1000px;width:1600px;float:left;">
+  <h1>学生成绩列表</h1>
+
+  <form action="/gradeListByStudentId" method="post">
+    <div>
+      <label>
+        请输入学生id<input type="number" name = "id">
+      </label>
+      <input type="submit" value="提交">
+    </div>
+
+  </form>
+
+  <table border="1">
+    <tr>
+      <th>id</th>
+      <th>姓名</th>
+      <th>科目一成绩</th>
+      <th>科目二成绩</th>
+      <th>科目三成绩</th>
+      <th>科目四成绩</th>
+    </tr>
+    <tr th:each="m:${gradeList}">
+      <td th:text="${m.id}"></td>
+      <td th:text="${m.name}"></td>
+      <td th:text="${m.class1Grade}"></td>
+      <td th:text="${m.class2Grade}"></td>
+      <td th:text="${m.class3Grade}"></td>
+      <td th:text="${m.class4Grade}"></td>
+    </tr>
+  </table>
+
+  <form action="/gradeListPage" method="post">
+    <div>
+      <label>
+        请选择页数<select name="number">
+        <option value="0">1</option>
+        <option value="1">2</option>
+      </select>
+      </label>
+      <input type="submit" value="确定">
+    </div>
+
+  </form>
+</div>
+
+</body>
+</html>

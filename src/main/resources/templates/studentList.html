@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>studentList</title>
+</head>
+
+<div id="header" style="background-color:#33CCCC;">
+  <h1 style="margin-bottom:0;text-align:center">欢迎来到驾校管理系统</h1></div>
+<body>
+<div th:insert="commons::fragment-name"></div>
+
+<div id="content" style="background-color:#E0FFFF;height:1000px;width:1600px;float:left;">
+  <h1>学生列表</h1>
+
+  <form action="/studentListByStatus" method="post">
+    <div>
+      <label>
+        请选择毕业状态<select name="status">
+        <option value="0">未毕业</option>
+        <option value="1">已毕业</option>
+      </select>
+      </label>
+      <label>
+        请选择页数<select name="number">
+        <option value="0">1</option>
+        <option value="1">2</option>
+      </select>
+      </label>
+      <input type="submit" value="提交">
+    </div>
+
+  </form>
+
+  <table border="1">
+    <tr>
+      <th>id</th>
+      <th>姓名</th>
+      <th>报名时间</th>
+      <th>毕业状态（0未毕业，1已毕业）</th>
+    </tr>
+    <tr th:each="m:${studentList}">
+      <td th:text="${m.id}"></td>
+      <td th:text="${m.name}"></td>
+      <td th:text="${m.joinTime}"></td>
+      <td th:text="${m.status}"></td>
+    </tr>
+  </table>
+
+  <form action="/studentList" method="post">
+    <div>
+      <label>
+        请选择页数<select name="number">
+          <option value="0">1</option>
+          <option value="1">2</option>
+        </select>
+      </label>
+      <input type="submit" value="确定">
+    </div>
+
+  </form>
+</div>
+
+</body>
+</html>
